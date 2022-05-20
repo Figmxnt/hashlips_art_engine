@@ -49,6 +49,7 @@ build/Release
 
 # Dependency directories
 
+assets/
 build/
 dist/
 node_modules/
