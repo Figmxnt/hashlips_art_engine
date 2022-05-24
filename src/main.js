@@ -128,11 +128,11 @@ const drawBackground = () => {
   ctx.fillRect(0, 0, format.width, format.height);
 };
 
-const addMetadata = (_dna, _edition, _growEditionSizeTo) => {
+const addMetadata = (_dna, _edition) => {
   let dateTime = Date.now();
   let tempMetadata = {
     name: `${namePrefix} #00${_edition + 1}`,
-    description: `${description}. This is the number ${_edition + 1}/${_growEditionSizeTo}.`,
+    description: description,
     image: `${baseUri}/${_edition}.png`,
     dna: sha1(_dna),
     edition: _edition,
@@ -402,7 +402,7 @@ const startCreating = async () => {
             ? console.log("Editions left to create: ", abstractedIndexes)
             : null;
           saveImage(abstractedIndexes[0]);
-          addMetadata(newDna, abstractedIndexes[0], layerConfigurations[layerConfigIndex].growEditionSizeTo);
+          addMetadata(newDna, abstractedIndexes[0]);
           saveMetaDataSingleFile(abstractedIndexes[0]);
           console.log(
             `Created edition: ${abstractedIndexes[0]}, with DNA: ${sha1(
